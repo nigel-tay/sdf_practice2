@@ -33,10 +33,11 @@ public class Client {
         try {
             while (!userInput.equals("quit")) {
                 userInput = cons.readLine();
-                
-                while(null != (line = br.readLine())) {
-                    dos.writeUTF(line);
-                    dos.flush();
+                if (userInput.equals("transfer")) {
+                    while(null != (line = br.readLine())) {
+                        dos.writeUTF(line);
+                        dos.flush();
+                    }
                 }
             }
         }
@@ -45,6 +46,7 @@ public class Client {
             socket.close();
         }
         finally {
+            br.close();
             dos.close();
             bos.close();
             os.close();
